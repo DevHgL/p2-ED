@@ -1,0 +1,168 @@
+Remover um elemento da Tabela Hashing.
+
+void remover(lista **tabela, int x){
+
+  int pos = hash(x);
+  lista *p = tabela[pos];
+  p = RemoverLista(p,x);
+}
+
+Lista *RemoverLista(lista *l, int x){
+
+  if(l != NULL){
+
+    if(l-> info == x){
+      lista *aux = l->prox;
+      free(lista);
+      return aux;
+    }
+    else
+      l->prox = RemoverLista(l->prox,x);
+  }
+  return l;
+}
+
+Fazendo uso do TAD LISTA, implemente uma função que receba duas listas, l1 e l2, e retorne
+uma terceira lista, l3, que contém os elementos comuns entre l1 e l2.
+
+Lista Juntas (Lista l1, Lista L2){
+
+  Lista l3 = Inicializar();
+  int i,j;
+  for(i= 0; i<Size(l1); i++){
+    int x = Obter(l1,i);
+    for(j= 0; j<Size(l2); j++){
+      int y = Obter(l2,j);
+      if(x == y)
+      inserirFinal(l3,x);
+    }
+  }
+  return l3;
+}
+
+Matriz genérica (Alimento[id,nome,preço, cal], roupas[id,nome,preço,tam,modelo], mobilia[if,nome,peso,preço]):
+a) (0,5) Estruturas de dados necessárias.
+b) (1,0) Implemente uma função que remova um elemento da matriz. É informado apenas
+o identificador do item a ser removido.
+c) (1,0) Implemente uma função que conte a quantidade de itens, de cada tipo, com preço
+superior a p.
+
+a) 
+
+typedef struct alimento{      
+        
+  int id;                             
+  char name[32];
+  float cal;
+  float preço;
+}Alimento;
+
+typedef struct roupa{
+
+  int id;
+  char name[23];
+  float preco;
+  char tam;
+  char modelo[32];
+}Roupa;
+
+typedef struct mobilia{
+
+  int id;
+  char name[23];
+  float peso;
+  float preco;
+}Mobilia;
+
+typedef struct generico{
+
+  int tipo;
+  void *item;
+}Generico;
+
+
+b)  
+void Remover(Generico **mat, int n, int m, int id){
+
+  int i,j;
+  for(int =0;i<n;i++){
+    for(j =0;j<m;j++){
+      if(mat[i][j].tipo == 1){
+        Alimento *x = (Alimento*)mat[i][j].item;
+        if(x->id == id){
+          free(mat[i][j].item);
+          mat[i][j].tipo = 0;
+        }
+        else if(mat[i][j].tipo == 2){
+        Roupa *x = (Roupa*)mat[i][j].item;
+        if(x->id == id){
+          free(mat[i][j].item);
+          mat[i][j].tipo = 0;
+        }
+      }
+        else if(mat[i][j].tipo == 3){
+        Mobilia *x = (Mobilia*)mat[i][j].item;
+        if(x->id == id){
+          free(mat[i][j].item);
+          mat[i][j].tipo = 0;
+        }
+    }
+  }
+}
+
+c) 
+
+void Contar(Generico **mat, int n, int m, int id){
+
+  int i,j;
+  for(i=0; i<n;i++){
+    for(j=0;j<m;j++){
+      if(mat[i][j].tipo == 1){
+        Alimento *x = (Alimento*)mat[i][j].item;
+        if(x->preco>p);
+        contA++;
+      }
+      else if(mat[i][j].tipo == 2){
+        Roupa *x = (Roupa*)mat[i][j].item;
+        if(x->preco > p);
+        contR++;
+      }
+    }
+      else if(mat[i][j].tipo == 3){
+        Roupa *x = (Roupa*)mat[i][j].item;
+        if(x->preco > p);
+        contM++;
+      }
+  }
+  printf(" %da, %d, %d ", contA, contR, contM);
+}
+
+
+grafo g, n vertices, conte o num de caminhos, que possuem o custo menor de c
+
+int Existe(int *vet, int pos, int x){
+  int i;
+  for(i=0; i<pos; i++)
+    if(vet[i] == x)
+      return l;
+  return 0;
+}
+
+int calculaCusto(lista **g, int *vet, int n){
+
+  int i, custo = 0;
+  for(i=1;i<n;i++)
+    custo += custoAresta(g,vet[i-1];vet[i]);
+  return custo;
+}
+
+int custoAresta(lista **g, int a, int b){
+
+  lista *p = g[a];
+  while(p!= NULL){
+    if(p->destino ==b)
+      return p->custo;
+    p = p->prox;
+  }
+  return -1;
+}
